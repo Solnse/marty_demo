@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Netzke Testing</title>
+  <%= csrf_meta_tag %>
+  <%= load_netzke theme: "classic" %>
+
+  <% if params[:spec] %>
+    <%= javascript_include_tag "/assets/netzke/testing/expect/expect.js" %>
+    <%= javascript_include_tag "/assets/netzke/testing/mocha/mocha.js" %>
+    <%= stylesheet_link_tag "/assets/netzke/testing/mocha/mocha.css" %>
+    <script>
+      mocha.setup('bdd');
+      mocha.setup({ignoreLeaks: true, slow: 500, timeout: 5000});
+      Ext.onReady(function(){
+        Netzke.mochaRunner = mocha.run(function(){Netzke.mochaDone = true;});
+      });
+    </script>
+    <% if !params["no-helpers"] %>
+      <%= javascript_include_tag "/assets/netzke/testing/helpers/actions" %>
+      <%= javascript_include_tag "/assets/netzke/testing/helpers/queries" %>
+      <%= javascript_include_tag "/assets/netzke/testing/helpers/expectations" %>
+      <%= javascript_include_tag "/assets/netzke/testing/helpers/grid" %>
+      <%= javascript_include_tag "/assets/netzke/testing/helpers/form" %>
+    <% end %>
+
+    <% for path in Netzke::Testing.custom_js %>
+      <%= javascript_include_tag path %>
+    <% end %>
+
+    <%= javascript_include_tag "/netzke/specs/#{params[:spec]}" %>
+  <% end %>
+
+</head>
+<body>
+
+<%= yield %>
+<div id="mocha"></div>
+</body>
+</html>
