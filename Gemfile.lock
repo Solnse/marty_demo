@@ -1,5 +1,6 @@
-PATH
-  remote: /home/chad/repos/marty
+GIT
+  remote: https://github.com/arman000/marty.git
+  revision: 1e30a6eee00b931d1669830e4e3b96962b1a22ac
   specs:
     marty (0.4.16)
       axlsx (= 2.1.0pre)
@@ -182,7 +183,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
-  marty!
+  marty (~> 0.4.16)!
   pg
   rails (= 4.2.1)
   sass-rails (~> 5.0)

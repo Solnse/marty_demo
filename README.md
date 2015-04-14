@@ -2,7 +2,7 @@
 
 add to Gemfile:
 ```ruby
-gem 'marty', git: "https://anonymous:anonymous@gitlab.pnmac.com/cm_tech/marty.git"
+gem 'marty', git: "https://github.com/arman000/marty.git"
 ```
 Marty currently requires netzke for the presentation layer, and since netzke requires extjs, we’re going to need to integrate it.
 

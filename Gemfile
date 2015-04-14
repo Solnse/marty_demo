@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'marty', '~> 0.4.16'
+gem 'marty', '~> 0.4.16', git: "https://github.com/arman000/marty.git"
 
 gem 'rails', '4.2.1'
 gem 'pg'
