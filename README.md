@@ -93,7 +93,7 @@ modify app/views/layouts/application.html.erb
     config.marty.local_password = 'marty'
     config.marty.autologin = 1
 
-    # for ldap authentication.
+    # for ldap authentication
     config.marty.ldap = ActiveSupport::OrderedOptions.new
     config.marty.ldap.host = "example.com"
     config.marty.ldap.port = 389
@@ -126,7 +126,7 @@ add your first marty user in your application db/seeds.rb:
 			ur.save!
 		}
 ```
-**_We can now run the migrations:_**
+**_We can now run the seeds:_**
 
 	$ rake marty:seed
 	$ rake db:seed  # if you created a Marty::User to populate in your db/seeds.rb file.
@@ -175,9 +175,10 @@ lib/example_app/migrations.rb
 ```ruby
 require 'marty/migrations'
 module ExampleApp::Migrations
-include Marty::Migrations
-def tb_prefix
-    "example_app_"
+	include Marty::Migrations
+	def tb_prefix
+	  "example_app_"
+	end
 end
 ```
 *# some SQL commands to bypass McFly versioning (check your db docs for what you might need.) Useful for fixing records when you don’t want the change versioned.*
