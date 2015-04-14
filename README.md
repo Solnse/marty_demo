@@ -1,14 +1,15 @@
 **Adding Marty to a new project.**
 
 add to Gemfile:
-
+```ruby
 gem 'marty', git: "https://anonymous:anonymous@gitlab.pnmac.com/cm_tech/marty.git"
-
+```
 Marty currently requires netzke for the presentation layer, and since netzke requires extjs, we’re going to need to integrate it.
 
 **_Install extjs somewhere on the machine and create a symbolic link to it as public/extjs_**
 
-example: {PROJECT_ROOT}/public $ ln -s ~/repos/extjs-version extjs
+example:
+    {PROJECT_ROOT}/public $ ln -s ~/repos/extjs-version extjs
 
 **_Netzke also uses the FamFamFam Silk icon set, so you can copy them into public/images/icons folder. (or symlink)_**
 
@@ -37,23 +38,23 @@ Referencing and utilizing Marty components is namespaced so our application shou
 **_redirect application_controller to use our namespaced controller which inherits from marty._**
 
 app/controllers/application_controller.rb: replace everything with the following 2 lines:
-
+```ruby
 	require ‘example_app/application_controller’
 	ApplicationController = ExampleApp::ApplicationController
-
+```
 **_create application controller file:_**
 
 app/controllers/example_app/application_controller.rb:
-
+```ruby
 	class ExampleApp::ApplicationController < Marty::ApplicationController
 		protect_from_forgery
 		layout "example_app/application"
 	end
-
+```
 **_Configure routes to mount the Marty Engine in the application and include netzke routes._**
 
 app/config/routes.rb:
-
+```ruby
     Rails.application.routes.draw do
         …
         netzke
@@ -64,13 +65,13 @@ app/config/routes.rb:
         root 'example_app/components#home'
         …
     end
-
+```
 **_Require marty in a main application file that will always get loaded._**
 
 lib/example_app.rb
-
+```ruby
 	require ‘marty’
-
+```
 **_Change javascript includes to point to the javascript files we will be using, via netzke._**
 
 modify app/views/layouts/application.html.erb
@@ -78,7 +79,7 @@ modify app/views/layouts/application.html.erb
 	**change:** <%= javascript_include_tag %> **to:** <%= netzke_init %>
 
 **_Add marty config lines to app/config/application.rb in the class Application < Rails::Application block:_**
-
+```ruby
     # always load files from our lib directory.
     config.autoload_paths += %W(#{config.root}/lib)
     config.session_store :cookie_store, :key => '_example_app_session'
@@ -99,12 +100,13 @@ modify app/views/layouts/application.html.erb
     config.marty.ldap.base_dn = "OU=Example,DC=example,DC=com"
     config.marty.ldap.login = "sAMAccountName"
     config.marty.ldap.domain = "example"
+```
 **_If you wish to use ldap authentication:_**
 
 	**change:** config.marty.auth_source = ‘ldap’
 
 add your first marty user in your application db/seeds.rb:
-
+```ruby
 		login = ‘ldap_username’ # your windows login name
 		firstname = ‘FirstName’
 		lastname = ‘LastName’
@@ -123,7 +125,7 @@ add your first marty user in your application db/seeds.rb:
 			ur.role = role
 			ur.save!
 		}
-
+```
 **_We can now run the migrations:_**
 
 	$ rake marty:seed
@@ -134,7 +136,7 @@ add your first marty user in your application db/seeds.rb:
 **_Now we need to create our controller for our application components._**
 
 app/controllers/example_app/components_controller.rb:
-
+```ruby
     require 'marty/permissions'
     require 'netzke/basepack/grid'
     require 'netzke/basepack/fields'
@@ -145,20 +147,20 @@ app/controllers/example_app/components_controller.rb:
         	render inline: "<%= netzke :'auth_app' %>", layout: true
      	end
     end
-
+```
 Notice the last require we do for the application specific auth_app. We can use Marty’s built in auth_app, but we need to create our class to inherit from it in order to pass the namespaced class name.
 
 **_create the auth_app:_**
 
 app/components/example_app/auth_app.rb:
-
+```ruby
 	require 'example_app'
     require 'marty/main_auth_app'
     require 'marty/permissions'
     class ExampleApp::AuthApp < Marty::MainAuthApp
     end
     AuthApp = ExampleApp::AuthApp
-
+```
 Now when we start up the server and go to local host, you will be presented with the basic application to login.
 
 **Making the Menus Work**
