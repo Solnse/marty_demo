@@ -1,3 +1,3 @@
-require 'orion/application_controller'
+require 'marty_demo/application_controller'
 
-ApplicationController = Orion::ApplicationController
+ApplicationController = MartyDemo::ApplicationController

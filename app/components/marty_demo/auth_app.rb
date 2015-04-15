@@ -1,10 +1,10 @@
-require 'orion'
+require 'marty_demo'
 require 'marty/main_auth_app'
 require 'marty/permissions'
 require 'marty/api_auth_view'
-require 'orion/config_view'
+require 'marty_demo/config_view'
 
-class Orion::AuthApp < Marty::MainAuthApp
+class MartyDemo::AuthApp < Marty::MainAuthApp
 
 	def system_menu
 		res = super
@@ -30,10 +30,10 @@ class Orion::AuthApp < Marty::MainAuthApp
 
   def ident_menu
     '<span style="color:#B32D15; font-size:150%; font-weight:bold;">' +
-      'Orion</span>'
+      'Marty Demo</span>'
   end
 
 	component :config_view
 end
 
-AuthApp = Orion::AuthApp
+AuthApp = MartyDemo::AuthApp

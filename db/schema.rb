@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 20150408162754) do
   add_index "marty_api_auths", ["api_key", "script_name", "obsoleted_dt"], name: "unique_marty_api_auths", unique: true, using: :btree
   add_index "marty_api_auths", ["app_name", "script_name", "obsoleted_dt"], name: "unique_marty_api_auths_2", unique: true, using: :btree
 
+  create_table "marty_demo_configs", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+  end
+
+  add_index "marty_demo_configs", ["key"], name: "index_marty_demo_configs_on_key", unique: true, using: :btree
+
   create_table "marty_import_types", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -149,13 +156,6 @@ ActiveRecord::Schema.define(version: 20150408162754) do
     t.boolean  "active",     null: false
     t.integer  "uuid"
   end
-
-  create_table "orion_configs", force: :cascade do |t|
-    t.string "key"
-    t.string "value"
-  end
-
-  add_index "orion_configs", ["key"], name: "index_orion_configs_on_key", unique: true, using: :btree
 
   add_foreign_key "marty_import_types", "marty_roles", column: "role_id", name: "fk_marty_import_types_marty_roles_role_id"
   add_foreign_key "marty_postings", "marty_posting_types", column: "posting_type_id", name: "fk_marty_postings_marty_posting_types_posting_type_id"

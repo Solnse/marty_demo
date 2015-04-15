@@ -1,6 +1,6 @@
 require 'marty/panel'
 
-class Orion::ConfigView < Marty::Grid
+class MartyDemo::ConfigView < Marty::Grid
   has_marty_permissions \
   create: :admin,
   read: :admin,
@@ -11,7 +11,7 @@ class Orion::ConfigView < Marty::Grid
     super
 
     c.title   = "Config"
-    c.model   = "Orion::Config"
+    c.model   = "MartyDemo::Config"
     c.columns = [:key, :value]
 
     c.blank_text = 'xxx'
@@ -28,4 +28,4 @@ class Orion::ConfigView < Marty::Grid
   end
 end
 
-ConfigView = Orion::ConfigView
+ConfigView = MartyDemo::ConfigView

@@ -1,10 +1,10 @@
 require 'marty/migrations'
 
-module Orion::Migrations
+module MartyDemo::Migrations
   include Marty::Migrations
 
   def tb_prefix
-  	"orion_"
+  	"marty_demo_"
   end
 
   def disable_triggers(table_name, &block)

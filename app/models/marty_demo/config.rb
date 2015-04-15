@@ -1,4 +1,4 @@
-class Orion::Config < Orion::Base
+class MartyDemo::Config < MartyDemo::Base
   validates_presence_of :key, :value
   validates_uniqueness_of :key
 

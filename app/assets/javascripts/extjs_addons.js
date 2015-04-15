@@ -5,13 +5,13 @@ Ext.JSON.encodeDate = function(o)
 }
 */
 
-Ext.ns("Ext.netzke.camp");
+Ext.ns("Ext.netzke.marty_demo");
 
 /*
  * MultiSelectCombo -- still needs work. I think to use this in a grid
  * we also need to override the getValue() method.
  */
-Ext.define('Ext.netzke.camp.MultiSelectCombo', {
+Ext.define('Ext.netzke.marty_demo.MultiSelectCombo', {
     extend: 	'Ext.form.ComboBox',
     alias: 	'widget.multiselectcombo',
     separator: 	",",
