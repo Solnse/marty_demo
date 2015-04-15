@@ -202,8 +202,8 @@ end
 app/models/example_app/base.rb
 
 ```ruby
-class Camp::Base < ActiveRecord::Base
-    self.table_name_prefix = "camp_"
+class ExampleApp::Base < ActiveRecord::Base
+    self.table_name_prefix = "example_app_"
     self.abstract_class = true
 end
 ```
