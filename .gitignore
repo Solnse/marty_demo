@@ -17,3 +17,5 @@
 /tmp
 /public/extjs
 /public/images/icons
+
+/config/ldap.yml
