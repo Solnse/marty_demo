@@ -299,7 +299,7 @@ end
 
 app/components/example_app/config_view.rb:
 ```ruby
-require ‘marty/cm_grid_panel’
+require 'marty/panel'
 class ExampleApp::ConfigView < Marty::Grid
     has_marty_permissions \
     create: :admin,
