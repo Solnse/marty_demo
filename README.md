@@ -104,7 +104,7 @@ modify app/views/layouts/application.html.erb
     config.marty.ldap.login     = ldap_yml["login"]
     config.marty.ldap.domain    = ldap_yml["domain"]
 ```
-** Create the ldap.yml file for the network variables.
+**_Create the ldap.yml file for the network variables._**
 app/config/ldap.yml
 ```ruby
 See app/config/ldap.yml.example
