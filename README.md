@@ -84,6 +84,9 @@ modify app/views/layouts/application.html.erb
     config.autoload_paths += %W(#{config.root}/lib)
     config.session_store :cookie_store, :key => '_example_app_session'
 
+    # if using ldap, create the yml file for the variables below.
+    ldap_yml = YAML.load_file("#{config.root}/config/ldap.yml")["ldap"]
+
     # marty requirements
     config.marty = ActiveSupport::OrderedOptions.new
     config.marty.roles = [:viewer,:admin,:dev,:user_manager]
@@ -95,11 +98,16 @@ modify app/views/layouts/application.html.erb
 
     # for ldap authentication
     config.marty.ldap = ActiveSupport::OrderedOptions.new
-    config.marty.ldap.host = "example.com"
-    config.marty.ldap.port = 389
-    config.marty.ldap.base_dn = "OU=Example,DC=example,DC=com"
-    config.marty.ldap.login = "sAMAccountName"
-    config.marty.ldap.domain = "example"
+    config.marty.ldap.host      = ldap_yml["host"]
+    config.marty.ldap.port      = ldap_yml["port"]
+    config.marty.ldap.base_dn   = ldap_yml["base_dn"]
+    config.marty.ldap.login     = ldap_yml["login"]
+    config.marty.ldap.domain    = ldap_yml["domain"]
+```
+** Create the ldap.yml file for the network variables.
+app/config/ldap.yml
+```ruby
+See app/config/ldap.yml.example
 ```
 **_If you wish to use ldap authentication:_**
 
@@ -286,7 +294,7 @@ class ExampleApp::AuthApp < Marty::MainAuthApp
 
     # Then we need to create the action handler for netzke.
     action :config_view do |a|
-        a.text     = ‘config’[
+        a.text     = ‘config’
         a.tooltip  = 'Manage system configuration'
         a.handler  = :netzke_load_component_by_action
         a.icon     = :cog
