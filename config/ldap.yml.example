@@ -1,5 +1,5 @@
 ldap:
-	host: "example.com"
+  host: "example.com"
   port: 389
   base_dn: "OU=Example,DC=example,DC=com"
   login: "sAMAccountName"

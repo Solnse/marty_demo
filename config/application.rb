@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module MartyDemo
   class Application < Rails::Application
-    ldap_yml = YAML.load_file('ldap.yml')["ldap"]
+    ldap_yml = YAML.load_file("#{config.root}/config/ldap.yml")["ldap"]
 
     config.autoload_paths += %W(#{config.root}/lib)
 
