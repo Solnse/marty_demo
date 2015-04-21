@@ -1,14 +1,13 @@
-GIT
-  remote: https://github.com/arman000/marty.git
-  revision: 1e30a6eee00b931d1669830e4e3b96962b1a22ac
+PATH
+  remote: /home/chad/repos/marty
   specs:
-    marty (0.4.16)
+    marty (0.4.24)
       axlsx (= 2.1.0pre)
       coderay
       delorean_lang
       mcfly
       net-ldap
-      netzke-basepack (= 0.11.0)
+      netzke-basepack (= 0.11.1)
       netzke-core (= 0.11.0)
       pg
       rubyzip
@@ -100,7 +99,7 @@ GEM
     minitest (5.6.0)
     multi_json (1.11.0)
     net-ldap (0.11)
-    netzke-basepack (0.11.0)
+    netzke-basepack (0.11.1)
       netzke-core (~> 0.11.0)
     netzke-core (0.11.0)
       execjs
@@ -185,7 +184,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
-  marty (~> 0.4.16)!
+  marty!
   pg
   rails (~> 4.2.1)
   responders (~> 2.0)

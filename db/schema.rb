@@ -103,15 +103,13 @@ ActiveRecord::Schema.define(version: 20150408162754) do
   end
 
   create_table "marty_scripts", force: :cascade do |t|
-    t.integer  "group_id",     null: false
-    t.datetime "created_dt",   null: false
-    t.datetime "obsoleted_dt", null: false
-    t.integer  "user_id",      null: false
+    t.integer  "group_id",                 null: false
+    t.datetime "created_dt",               null: false
+    t.datetime "obsoleted_dt",             null: false
+    t.integer  "user_id",                  null: false
     t.integer  "o_user_id"
-    t.string   "name",         null: false
-    t.text     "body",         null: false
-    t.string   "version",      null: false
-    t.text     "logmsg",       null: false
+    t.string   "name",         limit: 255, null: false
+    t.text     "body",                     null: false
   end
 
   add_index "marty_scripts", ["created_dt"], name: "index_marty_scripts_on_created_dt", using: :btree

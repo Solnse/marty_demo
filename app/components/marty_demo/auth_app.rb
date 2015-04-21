@@ -28,11 +28,6 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
   	true
   end
 
-  def ident_menu
-    '<span style="color:#B32D15; font-size:150%; font-weight:bold;">' +
-      'Marty Demo</span>'
-  end
-
 	component :config_view
 end
 
