@@ -36,7 +36,7 @@ class MartyDemo::Helper
              end
     end
 
-    BidTrack::Helper.to_csv(h, "col_sep" => JSV_SEP).
+    MartyDemo::Helper.to_csv(h, "col_sep" => JSV_SEP).
       gsub('""', '').
       gsub(/#{JSV_SEP}#{JSV_SEP}\"/, '"')
   end
