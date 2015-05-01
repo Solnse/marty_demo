@@ -1,7 +1,7 @@
 PATH
   remote: /home/chad/repos/marty
   specs:
-    marty (0.4.24)
+    marty (0.4.25)
       axlsx (= 2.1.0pre)
       coderay
       delorean_lang

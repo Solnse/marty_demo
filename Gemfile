@@ -4,6 +4,8 @@ gem 'marty', path: File.expand_path('../../marty', __FILE__) #git: "https://gith
 
 gem 'rails', '~> 4.2.1'
 gem 'pg'
+gem 'delayed_job_active_record'
+gem 'daemons', '~> 1.1.9'
 #gem 'thin'
 gem 'responders', '~> 2.0'
 gem 'sass-rails', '~> 5.0'
