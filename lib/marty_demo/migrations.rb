@@ -9,12 +9,12 @@ module MartyDemo::Migrations
 
   def disable_triggers(table_name, &block)
     begin
-      execute("ALTER TABLE #{table_name} DISABLE TRIGGER ALL;")
+      execute("ALTER TABLE #{table_name} DISABLE TRIGGER USER;")
 
       block.call
 
     ensure
-      execute("ALTER TABLE #{table_name} ENABLE TRIGGER ALL;")
+      execute("ALTER TABLE #{table_name} ENABLE TRIGGER USER;")
     end
   end
 

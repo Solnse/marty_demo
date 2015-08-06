@@ -1,13 +1,11 @@
 source 'https://rubygems.org'
-
-gem 'marty', path: File.expand_path('../../marty', __FILE__) #git: "https://github.com/arman000/marty.git"
+gem 'netzke-core'
+gem 'responders'
+gem 'daemons'
 
 gem 'rails', '~> 4.2.1'
-gem 'pg'
-gem 'delayed_job_active_record'
-gem 'daemons', '~> 1.1.9'
-#gem 'thin'
-gem 'responders', '~> 2.0'
+gem 'marty', git: "https://github.com/arman000/marty.git"
+
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
