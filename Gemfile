@@ -4,7 +4,7 @@ gem 'responders'
 gem 'daemons'
 
 gem 'rails', '~> 4.2.1'
-gem 'marty', git: "https://github.com/arman000/marty.git"
+gem 'marty', '~> 0.5.15'
 
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
