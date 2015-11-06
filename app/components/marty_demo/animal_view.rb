@@ -44,6 +44,7 @@ class MartyDemo::AnimalView < Marty::McflyGridPanel
     c.model = "MartyDemo::Animal"
     c.columns =
       [
+       :name,
        :tag,
        :family,
        :gender,
@@ -62,6 +63,12 @@ class MartyDemo::AnimalView < Marty::McflyGridPanel
     data_class.where(farm_id: manager_farm_id).scoping do
       super
     end
+  end
+
+  column :name do |c|
+    c.text  = 'Name'
+    c.width = 100
+    c.align = 'center'
   end
 
   column :tag do |c|
