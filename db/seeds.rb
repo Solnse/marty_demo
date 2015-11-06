@@ -16,3 +16,7 @@ if !Marty::User.find_by_login(login)
 		ur.save!
 	}
 end
+
+Mcfly.whodunnit = Marty::User.find_by_login('cedie')
+MartyDemo::Farm.seed
+MartyDemo::Animal.seed
