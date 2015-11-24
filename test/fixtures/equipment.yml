@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  marty_demo_farm_id: 
+  type: 
+  purchase_date: 2015-11-25
+  service_date: 2015-11-25
+  expected_replacement_date: 2015-11-25
+  purchase_price: 9.99
+
+two:
+  name: MyString
+  marty_demo_farm_id: 
+  type: 
+  purchase_date: 2015-11-25
+  service_date: 2015-11-25
+  expected_replacement_date: 2015-11-25
+  purchase_price: 9.99

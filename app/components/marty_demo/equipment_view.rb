@@ -1,4 +1,4 @@
-class MartyDemo::AnimalView < Marty::McflyGridPanel
+class MartyDemo::EquipmentView < Marty::McflyGridPanel
   has_marty_permissions \
   create: :any,
   read: [:any, :viewer],
@@ -40,15 +40,16 @@ class MartyDemo::AnimalView < Marty::McflyGridPanel
   def configure(c)
     super
 
-    c.title = "Animals"
-    c.model = MartyDemo::Animal
+    c.title = "Equipment"
+    c.model = MartyDemo::Equipment
     c.columns =
       [
        :name,
-       :tag,
-       :family,
-       :gender,
-       :description,
+       :equip_type,
+       :purchase_date,
+       :service_date,
+       :expected_replacement_date,
+       :purchase_price,
        :farm__name
       ]
     c.width = 700
@@ -71,25 +72,29 @@ class MartyDemo::AnimalView < Marty::McflyGridPanel
     c.align = 'center'
   end
 
-  column :tag do |c|
-    c.text  = 'Tag Number'
+  column :equip_type do |c|
+    c.text  = 'Type'
     c.width = 100
     c.align = 'center'
   end
 
-  column :family do |c|
-    c.text = 'Animal Type'
+  column :purchase_date do |c|
+    c.text = 'Purchase Date'
     c.width = 100
   end
 
-  column :gender do |c|
-    c.text = 'Gender'
+  column :service_date do |c|
+    c.text = 'Service Date'
     c.width = 100
   end
 
-  column :description do |c|
-    c.text = 'Notes'
-    c.width = 100
+  column :expected_replacement_date do |c|
+    c.text = 'Expected Replacement Date'
+    c.width = 130
+  end
+
+  column :purchase_price do |c|
+    c.text = "Purchase Price"
   end
 
   column :farm__name do |c|
@@ -97,4 +102,4 @@ class MartyDemo::AnimalView < Marty::McflyGridPanel
   end
 end
 
-AnimalView = MartyDemo::AnimalView
+EquipmentView = MartyDemo::EquipmentView

@@ -1,3 +1,5 @@
+require 'mcfly'
+
 class CreateMartyDemoFarms < McflyMigration
   include MartyDemo::Migrations
   def change
