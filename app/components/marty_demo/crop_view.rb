@@ -1,4 +1,4 @@
-class MartyDemo::AnimalView < Marty::McflyGridPanel
+class MartyDemo::CropView < Marty::McflyGridPanel
   has_marty_permissions \
   create: :any,
   read: [:any, :viewer],
@@ -40,19 +40,18 @@ class MartyDemo::AnimalView < Marty::McflyGridPanel
   def configure(c)
     super
 
-    c.title = "Animals"
-    c.model = MartyDemo::Animal
+    c.title = "Crops"
+    c.model = MartyDemo::Crop
     c.columns =
       [
        :name,
-       :tag,
-       :family,
-       :gender,
+       :price,
+       :season,
        :description,
        :farm__name
       ]
     c.width = 700
-    c.strong_default_attrs = {farm_id: manager_farm_id}
+    c.strong_default_attrs = { farm_id: manager_farm_id }
   end
 
   def manager_farm_id
@@ -71,19 +70,14 @@ class MartyDemo::AnimalView < Marty::McflyGridPanel
     c.align = 'center'
   end
 
-  column :tag do |c|
-    c.text  = 'Tag Number'
+  column :price do |c|
+    c.text  = 'Price'
     c.width = 100
     c.align = 'center'
   end
 
-  column :family do |c|
-    c.text = 'Animal Type'
-    c.width = 100
-  end
-
-  column :gender do |c|
-    c.text = 'Gender'
+  column :season do |c|
+    c.text = 'Season'
     c.width = 100
   end
 
@@ -97,4 +91,4 @@ class MartyDemo::AnimalView < Marty::McflyGridPanel
   end
 end
 
-AnimalView = MartyDemo::AnimalView
+CropView = MartyDemo::CropView

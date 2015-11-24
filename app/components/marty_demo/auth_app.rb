@@ -4,38 +4,46 @@ require 'marty/permissions'
 require 'marty/api_auth_view'
 require 'marty_demo/config_view'
 require 'marty_demo/farm_manager'
+require 'marty_demo/farm_manager_tabs'
 
 class MartyDemo::AuthApp < Marty::MainAuthApp
 
-	def system_menu
-		res = super
-		res[:menu] += [:config_view]
-		res
-	end
+  def system_menu
+    res = super
+    res[:menu] += [:config_view]
+    res
+  end
 
   def data_menus
     basic = [
       {
         text: 'examples',
         menu: [:farm_manager,
+               :farm_manager_tabs,
                :farm_view,
                :animal_view]
       }
     ]
   end
 
-	action :config_view do |a|
-		a.text     = 'config'
-		a.tooltip  = 'Manage system configuration'
-		a.handler  = :netzke_load_component_by_action
-		a.icon     = :cog
-		a.disabled = !self.class.has_admin_perm?
-	end
+  action :config_view do |a|
+    a.text     = 'config'
+    a.tooltip  = 'Manage system configuration'
+    a.handler  = :netzke_load_component_by_action
+    a.icon     = :cog
+    a.disabled = !self.class.has_admin_perm?
+  end
 
   action :farm_manager do |a|
     a.text     = 'Farm Manager'
     a.tooltip  = 'Farm Manager'
     a.handler  = :netzke_load_component_by_action
+  end
+
+  action :farm_manager_tabs do |a|
+    a.text    = 'Farm Manager Tabs'
+    a.tooltip = 'Farm Manager Tabs'
+    a.handler = :netzke_load_component_by_action
   end
 
   action :farm_view do |a|
@@ -50,16 +58,17 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
     a.handler  = :netzke_load_component_by_action
   end
 
-	def applications_menu
+  def applications_menu
     orig = super
   end
 
   def self.has_scripting_perm?
-  	true
+    true
   end
 
-	component :config_view
+  component :config_view
   component :farm_manager
+  component :farm_manager_tabs
   component :farm_view
   component :animal_view
 end
