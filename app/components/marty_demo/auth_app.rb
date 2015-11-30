@@ -1,10 +1,10 @@
 require 'marty_demo'
+
 require 'marty/main_auth_app'
 require 'marty/permissions'
-require 'marty/api_auth_view'
+
 require 'marty_demo/config_view'
 require 'marty_demo/farm_manager'
-require 'marty_demo/farm_manager_tabs'
 
 class MartyDemo::AuthApp < Marty::MainAuthApp
 
@@ -19,7 +19,6 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
       {
         text: 'examples',
         menu: [:farm_manager,
-               :farm_manager_tabs,
                :farm_view,
                :animal_view]
       }
@@ -38,12 +37,6 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
     a.text     = 'Farm Manager'
     a.tooltip  = 'Farm Manager'
     a.handler  = :netzke_load_component_by_action
-  end
-
-  action :farm_manager_tabs do |a|
-    a.text    = 'Farm Manager Tabs'
-    a.tooltip = 'Farm Manager Tabs'
-    a.handler = :netzke_load_component_by_action
   end
 
   action :farm_view do |a|
@@ -66,9 +59,16 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
     true
   end
 
+  def self.has_posting_perm?
+    true
+  end
+
+  def has_admin_perm?
+    true
+  end
+
   component :config_view
   component :farm_manager
-  component :farm_manager_tabs
   component :farm_view
   component :animal_view
 end
