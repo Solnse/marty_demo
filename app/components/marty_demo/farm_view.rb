@@ -1,5 +1,5 @@
 class MartyDemo::FarmView < Marty::McflyGridPanel
-  has_marty_permissions \
+ has_marty_permissions \
   create: :any,
   read: [:any, :viewer],
   update: :any,

@@ -1,19 +1,19 @@
 require 'mcfly'
 
-class CreateMartyDemoAnimals < McflyMigration
+class CreateMartyDemoCustomers < McflyMigration
   include MartyDemo::Migrations
   def change
-    create_table :marty_demo_animals do |t|
+    create_table :marty_demo_customers do |t|
       t.timestamps null: false
 
       t.belongs_to :farm, :class_name => MartyDemo::Farm
-      t.integer :tag
       t.string :name
-      t.string :family
-      t.string :gender
+      t.string :company
+      t.string :phone
+      t.date :join_date
       t.text :description
     end
 
-    add_mcfly_unique_index MartyDemo::Animal
+    add_mcfly_unique_index MartyDemo::Customer
   end
 end

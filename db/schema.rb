@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105220124) do
+ActiveRecord::Schema.define(version: 20151125205924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,12 +54,12 @@ ActiveRecord::Schema.define(version: 20151105220124) do
     t.integer  "o_user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "farm_id"
     t.integer  "tag"
     t.string   "name"
     t.string   "family"
     t.string   "gender"
     t.text     "description"
-    t.integer  "farm_id"
   end
 
   add_index "marty_demo_animals", ["tag", "obsoleted_dt"], name: "unique_marty_demo_animals", unique: true, using: :btree
@@ -70,6 +70,60 @@ ActiveRecord::Schema.define(version: 20151105220124) do
   end
 
   add_index "marty_demo_configs", ["key"], name: "index_marty_demo_configs_on_key", unique: true, using: :btree
+
+  create_table "marty_demo_crops", force: :cascade do |t|
+    t.integer  "group_id",     null: false
+    t.datetime "created_dt",   null: false
+    t.datetime "obsoleted_dt", null: false
+    t.integer  "user_id",      null: false
+    t.integer  "o_user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "farm_id"
+    t.string   "name"
+    t.string   "season"
+    t.decimal  "price"
+    t.text     "description"
+  end
+
+  add_index "marty_demo_crops", ["name", "obsoleted_dt"], name: "unique_marty_demo_crops", unique: true, using: :btree
+
+  create_table "marty_demo_customers", force: :cascade do |t|
+    t.integer  "group_id",     null: false
+    t.datetime "created_dt",   null: false
+    t.datetime "obsoleted_dt", null: false
+    t.integer  "user_id",      null: false
+    t.integer  "o_user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "farm_id"
+    t.string   "name"
+    t.string   "company"
+    t.string   "phone"
+    t.date     "join_date"
+    t.text     "description"
+  end
+
+  add_index "marty_demo_customers", ["name", "obsoleted_dt"], name: "unique_marty_demo_customers", unique: true, using: :btree
+
+  create_table "marty_demo_equipment", force: :cascade do |t|
+    t.integer  "group_id",                  null: false
+    t.datetime "created_dt",                null: false
+    t.datetime "obsoleted_dt",              null: false
+    t.integer  "user_id",                   null: false
+    t.integer  "o_user_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "farm_id"
+    t.string   "name"
+    t.string   "equip_type"
+    t.date     "purchase_date"
+    t.date     "service_date"
+    t.date     "expected_replacement_date"
+    t.decimal  "purchase_price"
+  end
+
+  add_index "marty_demo_equipment", ["name", "obsoleted_dt"], name: "unique_marty_demo_equipment", unique: true, using: :btree
 
   create_table "marty_demo_farms", force: :cascade do |t|
     t.integer  "group_id",     null: false
@@ -189,7 +243,6 @@ ActiveRecord::Schema.define(version: 20151105220124) do
     t.integer  "uuid"
   end
 
-  add_foreign_key "marty_demo_animals", "marty_demo_farms", column: "farm_id", name: "fk_marty_demo_animals_marty_demo_farms_farm_id"
   add_foreign_key "marty_import_types", "marty_roles", column: "role_id", name: "fk_marty_import_types_marty_roles_role_id"
   add_foreign_key "marty_postings", "marty_posting_types", column: "posting_type_id", name: "fk_marty_postings_marty_posting_types_posting_type_id"
   add_foreign_key "marty_promises", "marty_promises", column: "parent_id", name: "fk_marty_promises_marty_promises_parent_id"

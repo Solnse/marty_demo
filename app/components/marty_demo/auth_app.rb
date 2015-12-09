@@ -17,10 +17,13 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
   def data_menus
     basic = [
       {
-        text: 'examples',
+        text: 'Examples',
         menu: [:farm_manager,
                :farm_view,
-               :animal_view]
+               :animal_view,
+               :customer_view,
+               :equipment_view,
+               :crop_view]
       }
     ]
   end
@@ -51,6 +54,24 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
     a.handler  = :netzke_load_component_by_action
   end
 
+  action :customer_view do |a|
+    a.text    = 'Customers'
+    a.tooltip = 'Customers'
+    a.handler = :netzke_load_component_by_action
+  end
+
+  action :equipment_view do |a|
+    a.text = 'Equipment'
+    a.tooltip = 'Equipment'
+    a.handler = :netzke_load_component_by_action
+  end
+
+  action :crop_view do |a|
+    a.text    = 'Crops'
+    a.tooltip = 'Crops'
+    a.handler = :netzke_load_component_by_action
+  end
+
   def applications_menu
     orig = super
   end
@@ -63,7 +84,7 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
     true
   end
 
-  def has_admin_perm?
+  def self.has_admin_perm?
     true
   end
 
@@ -71,6 +92,9 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
   component :farm_manager
   component :farm_view
   component :animal_view
+  component :customer_view
+  component :equipment_view
+  component :crop_view
 end
 
 AuthApp = MartyDemo::AuthApp

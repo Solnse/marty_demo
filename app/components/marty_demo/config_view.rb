@@ -3,7 +3,7 @@ require 'marty/panel'
 class MartyDemo::ConfigView < Marty::Grid
   has_marty_permissions \
   create: :admin,
-  read: :admin,
+  read:   :admin,
   update: :admin,
   delete: :admin
 
