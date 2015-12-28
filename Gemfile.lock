@@ -53,7 +53,6 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.0)
     daemons (1.2.3)
-    debug_inspector (0.0.2)
     delorean_lang (0.3.21)
       activerecord (>= 3.2)
       treetop (~> 1.5)
@@ -163,10 +162,6 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    web-console (3.0.0)
-      activemodel (>= 4.2)
-      debug_inspector
-      railties (>= 4.2)
 
 PLATFORMS
   ruby
@@ -185,7 +180,6 @@ DEPENDENCIES
   spring
   turbolinks
   uglifier
-  web-console
 
 BUNDLED WITH
    1.11.2

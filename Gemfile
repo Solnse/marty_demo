@@ -15,6 +15,6 @@ gem 'jbuilder'
 
 group :development, :test do
   gem 'byebug'
-  gem 'web-console'
+  #gem 'web-console'
   gem 'spring'
 end

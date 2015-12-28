@@ -5,9 +5,13 @@ require 'marty_demo/equipment_view'
 require 'marty_demo/customer_view'
 
 class MartyDemo::FarmManager < Marty::Panel
+  include Netzke::Basepack::ItemPersistence
   include Marty::Extras::Layout
 
   js_configure do |c|
+    c.layout = :border
+    c.border = false
+
     c.init_component = <<-JS
       function(){
         var me = this;
@@ -34,6 +38,7 @@ class MartyDemo::FarmManager < Marty::Panel
           me.reloadCropView();
           me.reloadEquipmentView();
           me.reloadCustomerView();
+          me.reloadFarmDetailView();
         });
       }
     JS
@@ -82,6 +87,13 @@ class MartyDemo::FarmManager < Marty::Panel
         customer_view.getStore().load();
       }
     JS
+
+    c.reload_farm_detail_view = <<-JS
+      function() {
+        var me = this;
+        this.netzkeGetComponent('farm_detail_view').updateStats();
+      }
+    JS
   end
 
   def configure(c)
@@ -89,22 +101,31 @@ class MartyDemo::FarmManager < Marty::Panel
 
     c.title  = "Farm Details"
     c.header = false
-    c.items  =
-      [
-       :farm_view,
-       {
-         xtype: "tabpanel",
-         active_tab: 0,
-         region: :center,
-         split: true,
-         items: [
-                 :animal_view,
-                 :crop_view,
-                 :equipment_view,
-                 :customer_view
-                ],
-       },
-      ]
+    c.items  = [
+                {netzke_component: :farm_view,
+                 region: :center,
+                 height: 800
+                },
+                {netzke_component: :farm_detail_view,
+                 region: :east,
+                 width:  240,
+                 height: 300,
+                 split:  true,
+                 border: true
+                },
+                {
+                 xtype:      "tabpanel",
+                 active_tab: 0,
+                 region:     :south,
+                 split:      true,
+                 items: [
+                         :animal_view,
+                         :crop_view,
+                         :equipment_view,
+                         :customer_view
+                        ]
+                }
+               ]
   end
 
   def manager_farm_id
@@ -156,6 +177,15 @@ class MartyDemo::FarmManager < Marty::Panel
     c.min_width   = 700
     c.height      = 600
     c.auto_scroll = true
+  end
+
+  component :farm_detail_view do |c|
+    c.klass           = MartyDemo::FarmDetailView
+    c.manager_loan_id = root_sess[:manager_loan_id]
+    c.header          = false
+    c.min_width       = 400
+    c.height          = 800
+    c.auto_scroll     = true
   end
 end
 
