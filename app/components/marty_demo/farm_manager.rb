@@ -138,17 +138,17 @@ class MartyDemo::FarmManager < Marty::Panel
   end
 
   component :crop_view do |c|
-    c.header        = false
-    c.min_width     = 700
-    c.height        = 600
-    c.auto_scroll   = true
+    c.header      = false
+    c.min_width   = 700
+    c.height      = 600
+    c.auto_scroll = true
   end
 
   component :equipment_view do |c|
-    c.header        = false
-    c.min_width     = 700
-    c.height        = 600
-    c.auto_scroll   = true
+    c.header      = false
+    c.min_width   = 700
+    c.height      = 600
+    c.auto_scroll = true
   end
 
   component :customer_view do |c|

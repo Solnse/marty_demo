@@ -61,7 +61,7 @@ class MartyDemo::AuthApp < Marty::MainAuthApp
   end
 
   action :equipment_view do |a|
-    a.text = 'Equipment'
+    a.text    = 'Equipment'
     a.tooltip = 'Equipment'
     a.handler = :netzke_load_component_by_action
   end
